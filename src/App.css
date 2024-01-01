@@ -14,7 +14,8 @@ body {
 h1 {
   font-family: "Press Start 2P";
   font-size: 50px;
-  color: green;
+  color: lightgray;
+  padding: 10px;
   letter-spacing: 10px;
 }
 
@@ -25,13 +26,13 @@ h1 {
 }
 
 .counter {
-  color: white;
+  color: lightgray;
   font-family: "Press Start 2P", monospace;
   font-size: 16px;
   background-color: transparent;
   padding: 5px 10px;
   margin: 20px 0;
-  border: 1px solid white;
+  border: 1px solid lightgray;
   text-align: center;
   display: inline-block;
 }

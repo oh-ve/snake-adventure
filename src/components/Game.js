@@ -18,17 +18,23 @@ export default function Game() {
   };
 
   const drawSnake = (context) => {
-    context.fillStyle = "red";
+    context.fillStyle = "green";
     snake.forEach((part) => {
       context.fillRect(part.x, part.y, cellSize, cellSize);
       context.strokeStyle = "white";
+      context.lineWidth = 2;
       context.strokeRect(part.x, part.y, cellSize, cellSize);
+      context.lineWidth = 1;
     });
   };
 
   const drawFood = (context) => {
-    context.fillStyle = "red";
+    context.fillStyle = "green";
     context.fillRect(food.x, food.y, cellSize, cellSize);
+    context.strokeStyle = "white";
+    context.lineWidth = 2;
+    context.strokeRect(food.x, food.y, cellSize, cellSize);
+    context.lineWidth = 1;
   };
 
   const isGameOver = () => {
