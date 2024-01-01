@@ -19,7 +19,7 @@ export default function Jungle() {
   };
 
   const drawSnake = (context) => {
-    context.fillStyle = "mediumturquoise";
+    context.fillStyle = "teal";
     snake.forEach((part) => {
       context.fillRect(part.x, part.y, cellSize, cellSize);
       context.strokeStyle = "white";
@@ -30,7 +30,7 @@ export default function Jungle() {
   };
 
   const drawFood = (context) => {
-    context.fillStyle = "mediumturquoise";
+    context.fillStyle = "teal";
     context.fillRect(food.x, food.y, cellSize, cellSize);
     context.strokeStyle = "white";
     context.lineWidth = 2;
