@@ -6,6 +6,7 @@ import Desert from "./components/levels/Desert";
 import Mountains from "./components/levels/Mountains";
 import Forest from "./components/levels/Forest";
 import { Route, Routes, Link, Navigate } from "react-router-dom";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -45,6 +46,7 @@ function App() {
           </Link>
         </div>
       </div>
+      <Footer />{" "}
     </div>
   );
 }
