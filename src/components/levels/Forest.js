@@ -18,7 +18,7 @@ export default function Jungle() {
   };
 
   const drawSnake = (context) => {
-    context.fillStyle = "green";
+    context.fillStyle = "darkgreen";
     snake.forEach((part) => {
       context.fillRect(part.x, part.y, cellSize, cellSize);
       context.strokeStyle = "white";
@@ -29,7 +29,7 @@ export default function Jungle() {
   };
 
   const drawFood = (context) => {
-    context.fillStyle = "green";
+    context.fillStyle = "darkgreen";
     context.fillRect(food.x, food.y, cellSize, cellSize);
     context.strokeStyle = "white";
     context.lineWidth = 2;
@@ -165,8 +165,8 @@ export default function Jungle() {
           height={boardHeight}
           className="canvas"
         />
+        <Counter score={score} />
       </div>
-      <Counter score={score} />
     </>
   );
 }

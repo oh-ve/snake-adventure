@@ -42,3 +42,89 @@ h1 {
   height: 100%;
   background-color: transparent; /* Make the canvas transparent */
 }
+
+.level {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: space-between;
+}
+
+#levels {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.level-wrapper {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  width: 1600px;
+}
+
+#canvasContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 1300px;
+}
+.button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: top;
+  position: absolute;
+  right: 0;
+}
+
+.level-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.button-container button {
+  width: 130px;
+  height: 40px;
+  color: white;
+  font-family: "Press Start 2P", monospace;
+  font-size: 12px;
+  border: none;
+  border-radius: 5px;
+  margin: 10px 0;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.button-container button:hover {
+  transform: scale(1.05);
+}
+
+.button-container button:focus {
+  outline: none;
+}
+
+#jungle-button {
+  background-color: mediumorchid;
+}
+
+#underwater-button {
+  background-color: mediumturquoise;
+}
+
+#desert-button {
+  background-color: goldenrod;
+}
+
+#forest-button {
+  background-color: darkgreen;
+}
+
+#bushland-button {
+  background-color: rosybrown;
+}
+
+#mountains-button {
+  background-color: navy;
+}
