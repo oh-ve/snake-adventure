@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
-import Counter from "./Counter";
-import Jungle from "../images/jungle.png";
+import Counter from "../Counter";
+import underwaterBackground from "../../images/underwater.png";
 
-export default function Game() {
+export default function Jungle() {
   const canvasRef = useRef(null);
   const directionRef = useRef({ x: 1, y: 0 });
   const boardWidth = 1300;
@@ -18,7 +18,7 @@ export default function Game() {
   };
 
   const drawSnake = (context) => {
-    context.fillStyle = "green";
+    context.fillStyle = "blue";
     snake.forEach((part) => {
       context.fillRect(part.x, part.y, cellSize, cellSize);
       context.strokeStyle = "white";
@@ -29,7 +29,7 @@ export default function Game() {
   };
 
   const drawFood = (context) => {
-    context.fillStyle = "green";
+    context.fillStyle = "blue";
     context.fillRect(food.x, food.y, cellSize, cellSize);
     context.strokeStyle = "white";
     context.lineWidth = 2;
@@ -154,7 +154,7 @@ export default function Game() {
           width: "1300px",
           height: "600px",
           position: "relative",
-          backgroundImage: `url(${Jungle})`,
+          backgroundImage: `url(${underwaterBackground})`,
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
         }}
