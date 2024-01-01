@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import Counter from "./Counter";
+import Jungle from "../images/jungle.png";
 
 export default function Game() {
   const canvasRef = useRef(null);
@@ -13,12 +14,11 @@ export default function Game() {
   const [gameStarted, setGameStarted] = useState(false);
 
   const clearBoard = (context) => {
-    context.fillStyle = "white";
-    context.fillRect(0, 0, boardWidth, boardHeight);
+    context.clearRect(0, 0, boardWidth, boardHeight); // Use clearRect to clear the canvas
   };
 
   const drawSnake = (context) => {
-    context.fillStyle = "green";
+    context.fillStyle = "red";
     snake.forEach((part) => {
       context.fillRect(part.x, part.y, cellSize, cellSize);
       context.strokeStyle = "white";
@@ -113,7 +113,7 @@ export default function Game() {
       if (!gameStarted) {
         const context = canvasRef.current.getContext("2d");
         clearBoard(context);
-        context.fillStyle = "black";
+        context.fillStyle = "black"; // Set the background color to black
         context.font = "20px Arial";
         context.fillText("Press Enter to Start", 50, 200);
         return;
@@ -142,12 +142,24 @@ export default function Game() {
 
   return (
     <>
-      <canvas
-        ref={canvasRef}
-        width={boardWidth}
-        height={boardHeight}
-        className="canvas"
-      />
+      <div
+        id="canvasContainer"
+        style={{
+          width: "1300px",
+          height: "600px",
+          position: "relative",
+          backgroundImage: `url(${Jungle})`,
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
+        }}
+      >
+        <canvas
+          ref={canvasRef}
+          width={boardWidth}
+          height={boardHeight}
+          className="canvas"
+        />
+      </div>
       <Counter score={score} />
     </>
   );
