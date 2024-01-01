@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import Counter from "../Counter";
-import jungle from "../../images/jungle.png";
+import desertBackground from "../../images/desert-2.png";
 
 export default function Jungle() {
   const canvasRef = useRef(null);
@@ -154,7 +154,7 @@ export default function Jungle() {
           width: "1300px",
           height: "600px",
           position: "relative",
-          backgroundImage: `url(${jungle})`,
+          backgroundImage: `url(${desertBackground})`,
           backgroundSize: "100% 100%", // Adjust the background size property
           backgroundRepeat: "no-repeat",
         }}

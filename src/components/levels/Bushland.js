@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import Counter from "../Counter";
-import jungle from "../../images/jungle.png";
+import bushlandBackground from "../../images/bushland.png";
 
 export default function Jungle() {
   const canvasRef = useRef(null);
@@ -18,7 +18,7 @@ export default function Jungle() {
   };
 
   const drawSnake = (context) => {
-    context.fillStyle = "green";
+    context.fillStyle = "#c76d32";
     snake.forEach((part) => {
       context.fillRect(part.x, part.y, cellSize, cellSize);
       context.strokeStyle = "white";
@@ -29,7 +29,7 @@ export default function Jungle() {
   };
 
   const drawFood = (context) => {
-    context.fillStyle = "green";
+    context.fillStyle = "#c76d32";
     context.fillRect(food.x, food.y, cellSize, cellSize);
     context.strokeStyle = "white";
     context.lineWidth = 2;
@@ -154,7 +154,7 @@ export default function Jungle() {
           width: "1300px",
           height: "600px",
           position: "relative",
-          backgroundImage: `url(${jungle})`,
+          backgroundImage: `url(${bushlandBackground})`,
           backgroundSize: "100% 100%", // Adjust the background size property
           backgroundRepeat: "no-repeat",
         }}
