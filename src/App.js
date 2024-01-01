@@ -5,7 +5,7 @@ import Bushland from "./components/levels/Bushland";
 import Desert from "./components/levels/Desert";
 import Mountains from "./components/levels/Mountains";
 import Forest from "./components/levels/Forest";
-import { Route, Routes, Link } from "react-router-dom";
+import { Route, Routes, Link, Navigate } from "react-router-dom";
 
 function App() {
   return (
@@ -14,6 +14,8 @@ function App() {
       <div className="level-wrapper">
         <div className="level-container">
           <Routes>
+            <Route path="/" element={<Navigate to="/jungle" />} />
+
             <Route path="/jungle" element={<Jungle />} />
             <Route path="/underwater" element={<Underwater />} />
             <Route path="/bushland" element={<Bushland />} />
