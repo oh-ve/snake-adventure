@@ -18,7 +18,7 @@ export default function Jungle() {
   };
 
   const drawSnake = (context) => {
-    context.fillStyle = "blue";
+    context.fillStyle = "#33b9d4";
     snake.forEach((part) => {
       context.fillRect(part.x, part.y, cellSize, cellSize);
       context.strokeStyle = "white";
@@ -29,7 +29,7 @@ export default function Jungle() {
   };
 
   const drawFood = (context) => {
-    context.fillStyle = "blue";
+    context.fillStyle = "#33b9d4";
     context.fillRect(food.x, food.y, cellSize, cellSize);
     context.strokeStyle = "white";
     context.lineWidth = 2;
@@ -155,7 +155,7 @@ export default function Jungle() {
           height: "600px",
           position: "relative",
           backgroundImage: `url(${underwaterBackground})`,
-          backgroundSize: "cover",
+          backgroundSize: "100% 100%", // Adjust the background size property
           backgroundRepeat: "no-repeat",
         }}
       >
