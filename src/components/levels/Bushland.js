@@ -12,6 +12,7 @@ export default function Jungle() {
   const [food, setFood] = useState({ x: 60, y: 80 });
   const [score, setScore] = useState(0);
   const [gameStarted, setGameStarted] = useState(false);
+  const [showText, setShowText] = useState(true);
 
   const clearBoard = (context) => {
     context.clearRect(0, 0, boardWidth, boardHeight); // Use clearRect to clear the canvas
@@ -115,13 +116,31 @@ export default function Jungle() {
   }, []);
 
   useEffect(() => {
+    const interval = setInterval(() => {
+      setShowText((prev) => !prev);
+    }, 500);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
     const drawGame = () => {
       if (!gameStarted) {
         const context = canvasRef.current.getContext("2d");
         clearBoard(context);
-        context.fillStyle = "black"; // Set the background color to black
-        context.font = "20px Arial";
-        context.fillText("Press Enter to Start", 50, 200);
+        if (showText) {
+          const text = "Press Enter to Start";
+          context.font = "30px 'Press Start 2P', Arial";
+          context.fillStyle = "rosybrown";
+          context.textAlign = "center";
+          context.textBaseline = "middle";
+          context.strokeStyle = "white";
+          context.lineWidth = 4;
+          const xPosition = boardWidth / 2;
+          const yPosition = boardHeight / 2;
+          context.strokeText(text, xPosition, yPosition);
+          context.fillText(text, xPosition, yPosition);
+        }
         return;
       }
 
@@ -144,7 +163,7 @@ export default function Jungle() {
 
     const gameLoop = setInterval(drawGame, 100);
     return () => clearInterval(gameLoop);
-  }, [gameStarted, snake, food, score]);
+  }, [gameStarted, snake, food, score, showText]);
 
   return (
     <>
