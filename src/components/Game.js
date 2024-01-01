@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import Counter from "./Counter";
 
 export default function Game() {
   const canvasRef = useRef(null);
@@ -124,7 +125,7 @@ export default function Game() {
         alert(`Game Over! Your score: ${score}`);
         setGameStarted(false);
         setSnake([{ x: 200, y: 200 }]);
-        directionRef.current = { x: 0, y: -1 };
+        directionRef.current = { x: 1, y: 0 };
         setScore(0);
         return;
       }
@@ -140,11 +141,14 @@ export default function Game() {
   }, [gameStarted, snake, food, score]);
 
   return (
-    <canvas
-      ref={canvasRef}
-      width={boardWidth}
-      height={boardHeight}
-      className="canvas"
-    />
+    <>
+      <canvas
+        ref={canvasRef}
+        width={boardWidth}
+        height={boardHeight}
+        className="canvas"
+      />
+      <Counter score={score} />
+    </>
   );
 }
