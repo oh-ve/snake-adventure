@@ -20,7 +20,7 @@ function App() {
           </Routes>
         </div>
         <div className="button-container">
-          <h2>Level</h2>
+          {/*      <h2>Level</h2> */}
           <Link to="/jungle">
             <button
               id="jungle-button"
