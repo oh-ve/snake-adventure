@@ -1,6 +1,7 @@
 import "./App.css";
 import { useLocation } from "react-router-dom";
 import GameLevel from "./components/GameLevel";
+import Highscores from "./components/Highscores";
 import { Route, Routes, Link, Navigate } from "react-router-dom";
 import Footer from "./components/Footer";
 
@@ -71,6 +72,7 @@ function App() {
           </Link>
         </div>
       </div>
+      <Highscores />
       <Footer />{" "}
     </div>
   );
