@@ -11,7 +11,7 @@ import mountainsImage from "../images/mountains.png";
 export default function GameLevel() {
   const canvasRef = useRef(null);
   const directionRef = useRef({ x: 1, y: 0 });
-  const boardWidth = 1300;
+  const boardWidth = 1200;
   const boardHeight = 600;
   const cellSize = 20;
   const [snake, setSnake] = useState([{ x: 200, y: 200 }]);
@@ -196,7 +196,7 @@ export default function GameLevel() {
       <div
         id="canvasContainer"
         style={{
-          width: "1300px",
+          width: "1200px",
           height: "600px",
           position: "relative",
           backgroundImage: `url(${backgroundImage})`,
