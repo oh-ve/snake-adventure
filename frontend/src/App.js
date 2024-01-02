@@ -1,10 +1,11 @@
 import "./App.css";
-import Jungle from "./components/levels/Jungle";
+/*import Jungle from "./components/levels/Jungle";
 import Underwater from "./components/levels/Underwater";
 import Bushland from "./components/levels/Bushland";
 import Desert from "./components/levels/Desert";
 import Mountains from "./components/levels/Mountains";
-import Forest from "./components/levels/Forest";
+import Forest from "./components/levels/Forest"; */
+import GameLevel from "./components/levels/GameLevel";
 import { Route, Routes, Link, Navigate } from "react-router-dom";
 import Footer from "./components/Footer";
 
@@ -15,14 +16,16 @@ function App() {
       <div className="level-wrapper">
         <div className="level-container">
           <Routes>
-            <Route path="/" element={<Navigate to="/jungle" />} />
+            <Route path="/:level" element={<GameLevel />} />
+
+            {/*<Route path="/" element={<Navigate to="/jungle" />} />
 
             <Route path="/jungle" element={<Jungle />} />
             <Route path="/underwater" element={<Underwater />} />
             <Route path="/bushland" element={<Bushland />} />
             <Route path="/desert" element={<Desert />} />
             <Route path="/mountains" element={<Mountains />} />
-            <Route path="/forest" element={<Forest />} />
+  <Route path="/forest" element={<Forest />} /> */}
           </Routes>
         </div>
         <div className="button-container">
