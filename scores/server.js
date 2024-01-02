@@ -21,7 +21,7 @@ app.post("/submit-score", async (req, res) => {
   const { player_name, score, level } = req.body;
   try {
     const result = await pool.query(
-      "INSERT INTO scores (player_name, score, levels) VALUES ($1, $2, $3) RETURNING *",
+      "INSERT INTO scores (player_name, score, level) VALUES ($1, $2, $3) RETURNING *",
       [player_name, score, level]
     );
     res.json(result.rows[0]);
