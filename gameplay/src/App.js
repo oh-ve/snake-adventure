@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "./App.css";
 import GameLevel from "./components/GameLevel";
 import { Route, Routes, Link, Navigate } from "react-router-dom";
@@ -15,6 +16,7 @@ function App() {
           </Routes>
         </div>
         <div className="button-container">
+          <h2>Level</h2>
           <Link to="/jungle">
             <button id="jungle-button">Jungle</button>
           </Link>

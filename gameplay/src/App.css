@@ -92,7 +92,7 @@ h1 {
   font-size: 12px;
   border: none;
   border-radius: 5px;
-  margin: 10px 0;
+  margin-bottom: 20px;
   cursor: pointer;
   transition: background-color 0.3s, transform 0.3s;
 }
@@ -103,6 +103,15 @@ h1 {
 
 .button-container button:focus {
   outline: none;
+}
+
+.button-container h2 {
+  color: lightgray;
+  font-family: "Press Start 2P", monospace;
+  font-size: 16px;
+  background-color: transparent;
+  margin-bottom: 20px;
+  display: inline-block;
 }
 
 #jungle-button {
