@@ -1,8 +1,14 @@
 import React, { useEffect, useRef, useState } from "react";
-import Counter from "../Counter";
-import jungle from "../../images/jungle.png";
+import { useParams } from "react-router-dom";
+import Counter from "./Counter";
+import jungleImage from "../images/jungle.png";
+import underwaterImage from "../images/underwater.png";
+import desertImage from "../images/desert-2.png";
+import forestImage from "../images/forest.png";
+import bushlandImage from "../images/bushland.png";
+import mountainsImage from "../images/mountains.png";
 
-export default function Jungle() {
+export default function GameLevel() {
   const canvasRef = useRef(null);
   const directionRef = useRef({ x: 1, y: 0 });
   const boardWidth = 1300;
@@ -13,13 +19,32 @@ export default function Jungle() {
   const [score, setScore] = useState(0);
   const [gameStarted, setGameStarted] = useState(false);
   const [showText, setShowText] = useState(true);
+  const { level } = useParams();
+  const levelColors = {
+    jungle: "mediumorchid",
+    underwater: "teal",
+    desert: "goldenrod",
+    forest: "darkgreen",
+    bushland: "rosybrown",
+    mountains: "navy",
+  };
+  const currentColor = levelColors[level] || "mediumorchid";
+  const backgrounds = {
+    jungle: jungleImage,
+    underwater: underwaterImage,
+    desert: desertImage,
+    forest: forestImage,
+    bushland: bushlandImage,
+    mountains: mountainsImage,
+  };
+  const backgroundImage = backgrounds[level] || jungleImage;
 
   const clearBoard = (context) => {
     context.clearRect(0, 0, boardWidth, boardHeight); // Use clearRect to clear the canvas
   };
 
   const drawSnake = (context) => {
-    context.fillStyle = "mediumorchid";
+    context.fillStyle = currentColor;
     snake.forEach((part) => {
       context.fillRect(part.x, part.y, cellSize, cellSize);
       context.strokeStyle = "white";
@@ -30,7 +55,7 @@ export default function Jungle() {
   };
 
   const drawFood = (context) => {
-    context.fillStyle = "mediumorchid";
+    context.fillStyle = currentColor;
     context.fillRect(food.x, food.y, cellSize, cellSize);
     context.strokeStyle = "white";
     context.lineWidth = 2;
@@ -131,7 +156,7 @@ export default function Jungle() {
         if (showText) {
           const text = "Press Enter to Start";
           context.font = "30px 'Press Start 2P', Arial";
-          context.fillStyle = "mediumorchid";
+          context.fillStyle = currentColor;
           context.textAlign = "center";
           context.textBaseline = "middle";
           context.strokeStyle = "white";
@@ -174,7 +199,7 @@ export default function Jungle() {
           width: "1300px",
           height: "600px",
           position: "relative",
-          backgroundImage: `url(${jungle})`,
+          backgroundImage: `url(${backgroundImage})`,
           backgroundSize: "100% 100%", // Adjust the background size property
           backgroundRepeat: "no-repeat",
         }}
