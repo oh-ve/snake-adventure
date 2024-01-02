@@ -1,8 +1,23 @@
 /* Global styles */
+html {
+  height: 100%;
+}
+
 body {
-  height: 100vh;
-  background-color: black;
+  min-height: 100%;
   margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  background-color: black;
+}
+
+.App {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
 }
 
 /* Main app container */
@@ -141,13 +156,62 @@ h1 {
   background-color: navy;
 }
 
+/* Highscores styles*/
+
+.highscores-container {
+  margin: 20px;
+  padding: 20px;
+  background-color: #000;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  color: lightgray;
+}
+
+.highscores-container h2 {
+  width: 1200px;
+  text-align: center;
+  color: lightgray;
+  font-family: "Press Start 2P", monospace;
+  letter-spacing: 5px;
+  margin-top: 50px;
+}
+
+.highscores-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.highscore-entry {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: #222;
+  border-radius: 4px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  font-family: "Press Start 2P", monospace;
+}
+
+.player-name {
+  font-weight: bold;
+  color: #4caf50;
+}
+
+.player-score {
+  color: lightgray;
+}
+
 /* Footer Styles */
 .footer {
+  width: 100%;
+  height: auto;
   color: lightgray;
   font-family: "Press Start 2P", monospace;
   font-size: 12px;
-  margin-top: auto;
   text-align: center;
+  background-color: #000;
+  position: sticky;
+  bottom: 0;
 }
 
 .footer span {

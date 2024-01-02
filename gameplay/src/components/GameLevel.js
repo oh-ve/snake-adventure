@@ -58,7 +58,6 @@ export default function GameLevel() {
       context.strokeStyle = "white";
       context.lineWidth = 2;
       context.strokeRect(part.x, part.y, cellSize, cellSize);
-      context.lineWidth = 1;
     });
   };
 
@@ -68,7 +67,6 @@ export default function GameLevel() {
     context.strokeStyle = "white";
     context.lineWidth = 2;
     context.strokeRect(food.x, food.y, cellSize, cellSize);
-    context.lineWidth = 1;
   };
 
   const isGameOver = () => {
@@ -115,6 +113,31 @@ export default function GameLevel() {
     });
   };
 
+  const handleGameOver = async () => {
+    const playerName = prompt("Game Over! Enter your name:");
+    if (playerName) {
+      try {
+        const response = await fetch(
+          "https://snake-c8t5.onrender.com/submit-score",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ player_name: playerName, score, level }),
+          }
+        );
+
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        // Handle the response here
+      } catch (error) {
+        console.error("There was a problem with the fetch operation:", error);
+      }
+    }
+  };
+
   useEffect(() => {
     const handleKeyDown = (e) => {
       switch (e.key) {
@@ -125,18 +148,22 @@ export default function GameLevel() {
           }
           break;
         case "ArrowUp":
+          e.preventDefault();
           if (directionRef.current.y !== 1)
             directionRef.current = { x: 0, y: -1 };
           break;
         case "ArrowDown":
+          e.preventDefault();
           if (directionRef.current.y !== -1)
             directionRef.current = { x: 0, y: 1 };
           break;
         case "ArrowLeft":
+          e.preventDefault();
           if (directionRef.current.x !== 1)
             directionRef.current = { x: -1, y: 0 };
           break;
         case "ArrowRight":
+          e.preventDefault();
           if (directionRef.current.x !== -1)
             directionRef.current = { x: 1, y: 0 };
           break;
@@ -194,7 +221,7 @@ export default function GameLevel() {
       updateSnake();
 
       if (isGameOver()) {
-        alert(`Game Over! Your score: ${score}`);
+        handleGameOver();
         setGameStarted(false);
         setSnake([{ x: 200, y: 200 }]);
         directionRef.current = { x: 1, y: 0 };
