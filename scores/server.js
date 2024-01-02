@@ -18,20 +18,30 @@ app.use(cors());
 app.use(bodyParser.json());
 
 app.post("/submit-score", async (req, res) => {
-  const { player_name, score } = req.body;
-  const result = await pool.query(
-    "INSERT INTO scores (player_name, score) VALUES ($1, $2) RETURNING *",
-    [player_name, score]
-  );
-  res.json(result.rows[0]);
+  const { player_name, score, level } = req.body;
+  try {
+    const result = await pool.query(
+      "INSERT INTO scores (player_name, score, levels) VALUES ($1, $2, $3) RETURNING *",
+      [player_name, score, level]
+    );
+    res.json(result.rows[0]);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Server error");
+  }
 });
 
 app.get("/scores", async (req, res) => {
-  const result = await pool.query("SELECT * FROM scores ORDER BY score DESC");
-  res.json(result.rows);
+  try {
+    const result = await pool.query("SELECT * FROM scores ORDER BY score DESC");
+    res.json(result.rows);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Server error");
+  }
 });
 
-const port = 8080;
+const port = process.env.PORT || 8080;
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
