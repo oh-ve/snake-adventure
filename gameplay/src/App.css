@@ -114,6 +114,10 @@ h1 {
   display: inline-block;
 }
 
+.button-container button.highlight {
+  border: 2px solid lightgray;
+}
+
 #jungle-button {
   background-color: mediumorchid;
 }
