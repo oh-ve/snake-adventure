@@ -39,8 +39,15 @@ export default function GameLevel() {
   };
   const backgroundImage = backgrounds[level] || jungleImage;
 
+  const initialSpeed = 100;
+  const speedIncrease = 2;
+
+  const currentSpeed = () => {
+    return initialSpeed - speedIncrease * score;
+  };
+
   const clearBoard = (context) => {
-    context.clearRect(0, 0, boardWidth, boardHeight); // Use clearRect to clear the canvas
+    context.clearRect(0, 0, boardWidth, boardHeight);
   };
 
   const drawSnake = (context) => {
@@ -113,6 +120,7 @@ export default function GameLevel() {
         case "Enter":
           if (!gameStarted) {
             setGameStarted(true);
+            setShowText(false);
           }
           break;
         case "ArrowUp":
@@ -137,18 +145,31 @@ export default function GameLevel() {
     };
 
     window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, []);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [gameStarted]);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setShowText((prev) => !prev);
-    }, 500);
+    let blinkInterval = null;
 
-    return () => clearInterval(interval);
-  }, []);
+    if (!gameStarted) {
+      blinkInterval = setInterval(() => {
+        setShowText((prev) => !prev);
+      }, 500);
+    } else {
+      setShowText(false);
+    }
+
+    return () => {
+      if (blinkInterval) clearInterval(blinkInterval);
+    };
+  }, [gameStarted]);
 
   useEffect(() => {
+    let gameLoop = null;
+
     const drawGame = () => {
       if (!gameStarted) {
         const context = canvasRef.current.getContext("2d");
@@ -166,7 +187,6 @@ export default function GameLevel() {
           context.strokeText(text, xPosition, yPosition);
           context.fillText(text, xPosition, yPosition);
         }
-
         return;
       }
 
@@ -187,9 +207,17 @@ export default function GameLevel() {
       drawFood(context);
     };
 
-    const gameLoop = setInterval(drawGame, 100);
-    return () => clearInterval(gameLoop);
-  }, [gameStarted, snake, food, score, showText]);
+    if (gameStarted) {
+      const speed = currentSpeed();
+      gameLoop = setInterval(drawGame, Math.max(speed, 20));
+    } else {
+      drawGame(); // Draw the initial frame for the blinking text
+    }
+
+    return () => {
+      if (gameLoop) clearInterval(gameLoop);
+    };
+  }, [gameStarted, snake, food, score, showText, currentColor]); // Include all dependencies
 
   return (
     <>
@@ -200,7 +228,7 @@ export default function GameLevel() {
           height: "600px",
           position: "relative",
           backgroundImage: `url(${backgroundImage})`,
-          backgroundSize: "100% 100%", // Adjust the background size property
+          backgroundSize: "100% 100%",
           backgroundRepeat: "no-repeat",
         }}
       >
