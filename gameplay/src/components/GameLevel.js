@@ -20,6 +20,7 @@ export default function GameLevel() {
   const [gameStarted, setGameStarted] = useState(false);
   const [showText, setShowText] = useState(true);
   const { level } = useParams();
+
   const levelColors = {
     jungle: "mediumorchid",
     underwater: "teal",
@@ -39,8 +40,8 @@ export default function GameLevel() {
   };
   const backgroundImage = backgrounds[level] || jungleImage;
 
-  const initialSpeed = 100;
-  const speedIncrease = 2;
+  const initialSpeed = 120;
+  const speedIncrease = 1;
 
   const currentSpeed = () => {
     return initialSpeed - speedIncrease * score;
