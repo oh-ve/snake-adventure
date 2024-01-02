@@ -1,9 +1,11 @@
+/* Global styles */
 body {
   height: 100vh;
   background-color: black;
   margin: 0;
 }
 
+/* Main app container */
 .App {
   display: flex;
   flex-direction: column;
@@ -11,6 +13,7 @@ body {
   min-height: 100vh;
 }
 
+/* Header style */
 h1 {
   font-family: "Press Start 2P";
   font-size: 50px;
@@ -19,12 +22,14 @@ h1 {
   letter-spacing: 10px;
 }
 
+/* Game board styles */
 #gameBoard {
   width: 1200px;
   height: 600px;
   position: relative;
 }
 
+/* Counter style */
 .counter {
   color: lightgray;
   font-family: "Press Start 2P", monospace;
@@ -37,10 +42,27 @@ h1 {
   display: inline-block;
 }
 
+/* Canvas style */
 .canvas {
   width: 100%;
   height: 100%;
   background-color: transparent; /* Make the canvas transparent */
+}
+
+/* Level selection Styles */
+
+.level-wrapper {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  width: 1500px;
+}
+
+.level-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
 }
 
 .level {
@@ -50,25 +72,8 @@ h1 {
   justify-content: space-between;
 }
 
-#levels {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
+/* Level button styles */
 
-.level-wrapper {
-  display: flex;
-  justify-content: center;
-  position: relative;
-  width: 1500px;
-}
-
-#canvasContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  width: 1200px;
-}
 .button-container {
   display: flex;
   flex-direction: column;
@@ -77,11 +82,17 @@ h1 {
   right: 0;
 }
 
-.level-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-grow: 1;
+.button-container h2 {
+  color: lightgray;
+  font-family: "Press Start 2P", monospace;
+  font-size: 16px;
+  background-color: transparent;
+  margin-bottom: 20px;
+  display: inline-block;
+}
+
+.button-container button.highlight {
+  border: 2px solid lightgray;
 }
 
 .button-container button {
@@ -105,19 +116,7 @@ h1 {
   outline: none;
 }
 
-.button-container h2 {
-  color: lightgray;
-  font-family: "Press Start 2P", monospace;
-  font-size: 16px;
-  background-color: transparent;
-  margin-bottom: 20px;
-  display: inline-block;
-}
-
-.button-container button.highlight {
-  border: 2px solid lightgray;
-}
-
+/* Button colors for each level*/
 #jungle-button {
   background-color: mediumorchid;
 }
@@ -142,6 +141,7 @@ h1 {
   background-color: navy;
 }
 
+/* Footer Styles */
 .footer {
   color: lightgray;
   font-family: "Press Start 2P", monospace;
@@ -150,6 +150,6 @@ h1 {
   text-align: center;
 }
 
-#emoji {
+.footer span {
   font-size: 20px;
 }
