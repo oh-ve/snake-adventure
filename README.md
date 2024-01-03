@@ -26,7 +26,9 @@ PostgreSQL for the database
 Open your command line interface. Navigate to the directory where you want to clone the repository.
 Run the following command to clone the repository:
 
+```bash
 git clone https://github.com/oh-ve/snake-adventure.git
+```
 
 ### Setting Up the Database
 
@@ -155,4 +157,4 @@ npm start
 
 ```
 
-🐍 Happy playing! 🐍
+🐍 **Happy playing!** 🐍
