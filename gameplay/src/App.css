@@ -170,17 +170,18 @@ h1 {
 }
 
 .highscores-container h2 {
-  width: 1200px; /* Adjust the width as needed */
+  width: 400px;
   text-align: center;
   color: lightgray;
   font-family: "Press Start 2P", monospace;
   letter-spacing: 5px;
   margin-top: 50px;
+  font-size: 31px;
 }
 
 .highscores-table {
-  width: 400px; /* Adjust the width as needed to match the game area */
-  margin: 0 auto; /* Center the table horizontally */
+  width: 400px;
+  margin: 0 auto;
   font-family: "Press Start 2P", monospace;
   font-size: 16px;
   border-collapse: collapse;
@@ -206,6 +207,13 @@ h1 {
   color: #4caf50;
 }
 
+#header-rank {
+  text-align: right;
+  padding-bottom: 10px;
+  font-size: 18px;
+  color: #4caf50;
+}
+
 .odd {
   background-color: #333;
   margin: 10px 0px;
@@ -224,7 +232,11 @@ h1 {
 }
 
 .highscores-table td.player-score {
-  text-align: right;
+  text-align: center;
+}
+
+.highscores-table td.player-rank {
+  font-size: smaller;
 }
 
 /* Footer Styles */
