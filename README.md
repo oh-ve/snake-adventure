@@ -1,5 +1,7 @@
 # SNAKE ADVENTURE
 
+Try it [here](https://snake-adventure.netlify.app/).
+
 ## Introduction
 
 "Snake Adventure" is a web-based game inspired by the classic arcade game Snake. Players control a snake as it navigates the screen, collecting food items to grow longer. However, with each food item eaten, the snake accelerates and grows, increasing the challenge of avoiding collisions with walls and its own tail. "Snake Adventure" offers multiple levels with different landscapes.
