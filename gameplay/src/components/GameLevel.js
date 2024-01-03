@@ -8,7 +8,7 @@ import forestImage from "../images/forest.png";
 import bushlandImage from "../images/bushland.png";
 import mountainsImage from "../images/mountains.png";
 
-export default function GameLevel() {
+export default function GameLevel({ onScoreSubmit }) {
   const canvasRef = useRef(null);
   const directionRef = useRef({ x: 1, y: 0 });
   const boardWidth = 1200;
@@ -20,16 +20,6 @@ export default function GameLevel() {
   const [gameStarted, setGameStarted] = useState(false);
   const [showText, setShowText] = useState(true);
   const { level } = useParams();
-
-  const levelColors = {
-    jungle: "mediumorchid",
-    underwater: "teal",
-    desert: "goldenrod",
-    forest: "darkgreen",
-    bushland: "rosybrown",
-    mountains: "navy",
-  };
-  const currentColor = levelColors[level] || "mediumorchid";
   const backgrounds = {
     jungle: jungleImage,
     underwater: underwaterImage,
@@ -39,6 +29,15 @@ export default function GameLevel() {
     mountains: mountainsImage,
   };
   const backgroundImage = backgrounds[level] || jungleImage;
+  const levelColors = {
+    jungle: "mediumorchid",
+    underwater: "teal",
+    desert: "goldenrod",
+    forest: "darkgreen",
+    bushland: "rosybrown",
+    mountains: "navy",
+  };
+  const currentColor = levelColors[level] || "mediumorchid";
 
   const initialSpeed = 120;
   const speedIncrease = 1;
@@ -116,26 +115,13 @@ export default function GameLevel() {
   const handleGameOver = async () => {
     const playerName = prompt("Game Over! Enter your name:");
     if (playerName) {
-      try {
-        const response = await fetch(
-          "https://snake-c8t5.onrender.com/submit-score",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ player_name: playerName, score, level }),
-          }
-        );
-
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        // Handle the response here
-      } catch (error) {
-        console.error("There was a problem with the fetch operation:", error);
-      }
+      const scoreDetails = { player_name: playerName, score, level };
+      onScoreSubmit(scoreDetails);
     }
+    setGameStarted(false);
+    setSnake([{ x: 200, y: 200 }]);
+    directionRef.current = { x: 1, y: 0 };
+    setScore(0);
   };
 
   useEffect(() => {
@@ -222,52 +208,45 @@ export default function GameLevel() {
 
       if (isGameOver()) {
         handleGameOver();
-        setGameStarted(false);
-        setSnake([{ x: 200, y: 200 }]);
-        directionRef.current = { x: 1, y: 0 };
-        setScore(0);
-        return;
+      } else {
+        const context = canvasRef.current.getContext("2d");
+        clearBoard(context);
+        drawSnake(context);
+        drawFood(context);
       }
-
-      const context = canvasRef.current.getContext("2d");
-      clearBoard(context);
-      drawSnake(context);
-      drawFood(context);
     };
 
     if (gameStarted) {
       const speed = currentSpeed();
       gameLoop = setInterval(drawGame, Math.max(speed, 20));
     } else {
-      drawGame(); // Draw the initial frame for the blinking text
+      drawGame();
     }
 
     return () => {
       if (gameLoop) clearInterval(gameLoop);
     };
-  }, [gameStarted, snake, food, score, showText, currentColor]); // Include all dependencies
+  }, [gameStarted, snake, food, score, showText, currentColor]);
 
   return (
-    <>
-      <div
-        id="canvasContainer"
-        style={{
-          width: "1200px",
-          height: "600px",
-          position: "relative",
-          backgroundImage: `url(${backgroundImage})`,
-          backgroundSize: "100% 100%",
-          backgroundRepeat: "no-repeat",
-        }}
-      >
-        <canvas
-          ref={canvasRef}
-          width={boardWidth}
-          height={boardHeight}
-          className="canvas"
-        />
-        <Counter score={score} />
-      </div>
-    </>
+    <div
+      id="canvasContainer"
+      style={{
+        width: "1200px",
+        height: "600px",
+        position: "relative",
+        backgroundImage: `url(${backgroundImage})`,
+        backgroundSize: "100% 100%",
+        backgroundRepeat: "no-repeat",
+      }}
+    >
+      <canvas
+        ref={canvasRef}
+        width={boardWidth}
+        height={boardHeight}
+        className="canvas"
+      />
+      <Counter score={score} />
+    </div>
   );
 }
