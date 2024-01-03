@@ -114,7 +114,7 @@ cd snake-adventure/scores
 npm run dev
 ```
 
-### API Endpoints
+#### API Endpoints
 
 The following API endpoints are available for interacting with the "Snake Adventure" backend:
 
