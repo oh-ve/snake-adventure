@@ -206,13 +206,13 @@ h1 {
   color: #4caf50;
 }
 
-.highscores-table tbody tr {
+.odd {
   background-color: #333;
   margin: 10px 0px;
   border-bottom: 10px solid black;
 }
 
-.highscores-table tbody tr:nth-child(odd) {
+.even {
   background-color: #222;
   margin: 1px 0px;
   border-bottom: 10px solid black;
