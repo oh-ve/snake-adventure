@@ -1,4 +1,4 @@
-# SNAKE ADVENTURE
+# 🐍 SNAKE ADVENTURE
 
 Try it [here](https://snake-adventure.netlify.app/).
 
