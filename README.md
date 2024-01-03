@@ -2,11 +2,66 @@
 
 Try it [here](https://snake-adventure.netlify.app/).
 
-## Introduction
+## Overview
 
 "Snake Adventure" is a web-based game inspired by the classic arcade game Snake. Players control a snake as it navigates the screen, collecting food items to grow longer. However, with each food item eaten, the snake accelerates and grows, increasing the challenge of avoiding collisions with walls and its own tail. "Snake Adventure" offers multiple levels with different landscapes.
 
 The game is built using React.js for interactive gameplay, while the back-end, powered by Node.js and Express.js, handles the storage of high scores in a PostgreSQL database.
+
+### Key Functionalities and Implementation
+
+- Canvas Setup
+
+The game is played on an HTML canvas element.
+The canvas size is set to 1200x600 pixels.
+
+- State Management
+
+The game uses React's useState hook to manage state variables like snake, food, score, and gameStarted.
+
+- Dynamic Backgrounds
+
+The game features different backgrounds for each level (e.g., jungle, underwater).
+Backgrounds are managed using an object where each key corresponds to a level, and its value is an imported image file.
+
+- Snake Mechanics
+
+The snake is represented as an array of objects, each object being a segment of the snake.
+Movement is achieved by adding a new segment at the front and removing one from the back, creating an illusion of motion.
+
+- Food Generation
+
+Food is randomly placed on the canvas.
+The position is calculated to align with the grid defined by the canvas size and cell size.
+
+- Collision Detection
+
+The game checks for collisions with the canvas borders and the snake itself.
+Collision results in the game over condition.
+
+- Game Speed
+
+The game's speed is managed through a dynamic function that decreases the interval between frame updates as the score increases.
+
+- User Input Handling
+
+Arrow key inputs are used to change the direction of the snake.
+The useEffect hook listens for keydown events and updates the snake's direction accordingly.
+
+- Rendering
+
+The game loop is managed using setInterval, which calls the draw function at a rate dependent on the game's current speed.
+The canvas is redrawn each frame to update the positions of the snake and food.
+
+- Game Over Handling
+
+When the game is over, the player can enter their name, and their score is submitted.
+The game resets the snake position, direction, and score for a new game.
+
+- High Scores
+
+The game tracks and displays high scores achieved by players.
+High scores are stored in a PostgreSQL database and displayed dynamically, with the player's latest score highlighted.
 
 ### Next steps
 
