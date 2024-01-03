@@ -156,7 +156,9 @@ h1 {
   background-color: navy;
 }
 
-/* Highscores styles*/
+/* Add this CSS for the Highscores component */
+
+/* Highscores styles */
 
 .highscores-container {
   margin: 20px;
@@ -168,7 +170,7 @@ h1 {
 }
 
 .highscores-container h2 {
-  width: 1200px;
+  width: 1200px; /* Adjust the width as needed */
   text-align: center;
   color: lightgray;
   font-family: "Press Start 2P", monospace;
@@ -176,29 +178,53 @@ h1 {
   margin-top: 50px;
 }
 
-.highscores-list {
-  list-style-type: none;
-  padding: 0;
-}
-
-.highscore-entry {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 10px;
-  padding: 10px;
-  background-color: #222;
-  border-radius: 4px;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+.highscores-table {
+  width: 400px; /* Adjust the width as needed to match the game area */
+  margin: 0 auto; /* Center the table horizontally */
   font-family: "Press Start 2P", monospace;
+  font-size: 16px;
+  border-collapse: collapse;
 }
 
-.player-name {
-  font-weight: bold;
+.highscores-table th,
+.highscores-table td {
+  padding: 10px;
+  text-align: left;
+}
+
+#header-name {
+  text-align: left;
+  padding-bottom: 10px;
+  font-size: 18px;
   color: #4caf50;
 }
 
-.player-score {
-  color: lightgray;
+#header-score {
+  text-align: right;
+  padding-bottom: 10px;
+  font-size: 18px;
+  color: #4caf50;
+}
+
+.highscores-table tbody tr {
+  background-color: #333;
+  margin: 10px 0px;
+  border-bottom: 10px solid black;
+}
+
+.highscores-table tbody tr:nth-child(odd) {
+  background-color: #222;
+  margin: 1px 0px;
+  border-bottom: 10px solid black;
+}
+
+.highscores-table .highlighted {
+  background-color: #4caf50;
+  font-weight: bold;
+}
+
+.highscores-table td.player-score {
+  text-align: right;
 }
 
 /* Footer Styles */
